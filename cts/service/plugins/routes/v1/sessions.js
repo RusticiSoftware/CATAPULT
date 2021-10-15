@@ -517,10 +517,10 @@ module.exports = {
                             const skipHeaders = {
                                 "content-encoding": true,
                                 "content-length": true,
-                                "transfer-encoding": true,
-                            }
+                                "transfer-encoding": true
+                            };
                             for (const [k, v] of Object.entries(proxyResponse.headers)) {
-                                if (!skipHeaders[k.toLowerCase()]) {
+                                if (! skipHeaders[k.toLowerCase()]) {
                                     response.header(k, v);
                                 }
                             }
