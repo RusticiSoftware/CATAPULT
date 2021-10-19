@@ -3,4 +3,5 @@ node_modules
 player/.env
 cts/.env
 cts/var
+lts/.PlayerConfig.js
 lts/pkg/dist
