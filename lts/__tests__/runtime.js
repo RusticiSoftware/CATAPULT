@@ -487,6 +487,13 @@ describe(
         let result,
             sessionId;
 
+        // Return here if no abandon because 'test.skip' doesn't actually skip it.
+        // There's like 20 tests that fail due to this skip not working.
+        if (!Helpers.hasAbandon())
+        {
+            return;
+        }
+
         run("AU execution", async () => {
             const pkgFileName = "008-1-abandoned.zip",
                 courseId = await Helpers.importPkg(pkgFileName);
@@ -572,6 +579,13 @@ describe(
         const run = Helpers.hasWaive() ? test : test.skip,
             reason = "Administrative";
         let result;
+
+        // Return here if no abandon because 'test.skip' doesn't actually skip it.
+        // There's like 20 tests that fail due to this skip not working.
+        if (!Helpers.hasWaive())
+        {
+            return;
+        }
 
         //
         // the package has one AU that will be run once but does not satisfy
