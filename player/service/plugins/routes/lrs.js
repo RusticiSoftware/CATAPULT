@@ -160,11 +160,11 @@ const Boom = require("@hapi/boom"),
                         throw Helpers.buildViolatedReqId("9.6.3.1-4", st.id);
                     }
 
-                    if (! session.is_initialized && st.verb.id !== VERB_INITIALIZED_ID) {
+                    if (! session.is_initialized && st.verb.id !== VERB_INITIALIZED_ID && !result.statements.includes(VERB_INITIALIZED_ID)) {
                         throw Helpers.buildViolatedReqId("9.3.0.0-4", st.id);
                     }
 
-                    if (session.is_terminated) {
+                    if (session.is_terminated || result.statements.includes(VERB_TERMINATED_ID)) {
                         throw Helpers.buildViolatedReqId("9.3.0.0-5", st.id);
                     }
                     if (session.is_abandoned) {
@@ -387,6 +387,8 @@ const Boom = require("@hapi/boom"),
             }
         }
         else if (resource === "agents") {
+            let parsedAgent;
+
             // all agents requests require an actor, and that actor must be the launch actor
             try {
                 parsedAgent = JSON.parse(req.query.agent);
