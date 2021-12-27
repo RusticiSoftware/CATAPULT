@@ -98,7 +98,15 @@ const saveLearnerPrefs = async (
 
                 return false;
             }
-            // this treats non-403 (like 400, 500, etc.) as not acceptable responses
+            // If no actor is provided to an agent profile endpoint, xAPI rules apply and requires a 400, not a 403.
+            else if (noActor) {
+                if (response.status !== 400) {
+                    Helpers.storeResult(false, false, {reqId, msg: `Save learner preferences with no actor query param should have responded with a status code: 400, but instead had a response status code: ${response.status} ${responseContent} (Testing ${reqId})`});
+
+                    return false;
+                }
+            }
+            // this treats other non-403 (like 400, 500, etc.) as not acceptable responses
             // for denying the request
             // eslint-disable-next-line no-magic-numbers
             else if (response.status !== 403) {
