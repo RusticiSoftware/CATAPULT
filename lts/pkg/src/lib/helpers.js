@@ -76,6 +76,9 @@ const Helpers = {
             return;
         }
 
+        return Helpers.returnAU(cmi5, loadReturnURL);
+    },
+    returnAU: (cmi5, loadReturnURL = false) => {
         try {
             const returnURL = cmi5.getReturnURL();
 
