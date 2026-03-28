@@ -402,7 +402,9 @@ describe.each(
 describe.each(
     [
         ["005-1-invalid-au.zip"],
-        ["005-2-invalid-au.zip"]
+        ["005-2-invalid-au.zip"],
+        ["005-3-invalid-batches-au.zip"],
+        ["005-4-valid-batches-au.zip"]
     ]
 )(
     "Test package: %s",
