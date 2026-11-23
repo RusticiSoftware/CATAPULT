@@ -26,7 +26,7 @@
     "@hapi/basic": "^6.0.0",
     "@hapi/boom": "^9.1.3",
     "@hapi/h2o2": "^9.1.0",
-    "@hapi/hapi": "^20.1.5",
+    "@hapi/hapi": "^21.4.13",
     "@hapi/hoek": "^9.2.0",
     "@hapi/inert": "^6.0.3",
     "@hapi/jwt": "^2.0.1",
